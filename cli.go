@@ -11,7 +11,6 @@ var cli struct {
 	clients int
 	servers int
 	runs    int
-	//cpus    int
 }
 
 func parse_cli(prog string) {
@@ -23,7 +22,6 @@ func parse_cli(prog string) {
 	flag.IntVar(&cli.clients, "clients", 1109, "number of clients")
 	flag.IntVar(&cli.servers, "servers", 151, "number of servers")
 	flag.IntVar(&cli.runs, "runs", 7, "number of runs")
-	//flag.IntVar(&cli.cpus, "cpus", 0, "number of cpus, 0 means all available")
 	flag.Usage = func() {
 
 		log.Println("Simple cpu benchmark based on message passing between a large")
@@ -39,9 +37,6 @@ func parse_cli(prog string) {
 	}
 	flag.Parse()
 
-	//if cli.cpus < 0 {
-	//	cpus = 0
-	//}
 	if cli.clients < 1 {
 		cli.clients = 1
 	}
