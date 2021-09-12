@@ -6,6 +6,7 @@ import (
 )
 
 var cli struct {
+	build   bool
 	debug   bool
 	quiet   bool
 	clients int
@@ -17,6 +18,7 @@ func parse_cli(prog string) {
 
 	log.SetFlags(0)
 
+	flag.BoolVar(&cli.build, "b", false, "print build id and exit")
 	flag.BoolVar(&cli.quiet, "q", false, "quiet mode, only print qmark value")
 	//flag.BoolVar(&cli.debug, "debug", false, "print debug information")
 	flag.IntVar(&cli.clients, "clients", 1705, "number of clients")

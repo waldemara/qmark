@@ -19,6 +19,11 @@ func main() {
 
 	parse_cli(prog)
 
+	if cli.build {
+		log.Print(build_id)
+		return
+	}
+
 	if !cli.quiet {
 		log.Printf("qmark build: %v  go version: %v  num cpus: %v",
 			build_id, runtime.Version(), runtime.NumCPU())
