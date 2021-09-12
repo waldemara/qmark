@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+echo "package main" > build_id.go
+echo "" >> build_id.go
+echo "const build_id = \"$(uuidgen)\"" >> build_id.go
