@@ -39,9 +39,9 @@ func parse_cli(prog string) {
 	}
 	flag.Parse()
 
-//	if cli.cpus < 0 {
-//		cpus = 0
-//	}
+	//if cli.cpus < 0 {
+	//	cpus = 0
+	//}
 	if cli.clients < 1 {
 		cli.clients = 1
 	}

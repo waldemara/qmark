@@ -1,11 +1,11 @@
 package main
 
 import (
-	//"fmt"
-	//"math"
+	"log"
+	"math"
 	"os"
 	"strings"
-	//"time"
+	"time"
 )
 
 func main() {
@@ -14,28 +14,44 @@ func main() {
 	prog := toks[len(toks)-1]
 
 	parse_cli(prog)
-/*
+
+	if !cli.quiet {
+		log.Printf("Calculating qmark, it could take a minute... ")
+	}
+
 	var sum time.Duration
-	p("Calculating qmark, it could take a minute... ")
-	results := qmark.RunQmark(qmark.CLIENTS, qmark.SERVERS, qmark.RUNS)
+
+	results := run_qmark(cli.clients, cli.servers, cli.runs)
+
 	for _, res := range results {
 		sum += res
 	}
+
 	avg := float64(int(sum)/len(results)) / 1000000000.0 // [s]
-	sumsqr := 0.0
-	for _, res := range results {
-		diff := float64(res)/1000000000.0 - avg
-		sumsqr += diff * diff
+	qmark := int(1000.0 / avg)
+
+	if cli.quiet {
+
+		log.Println(qmark)
+
+	} else {
+
+		sumsqr := 0.0
+		for _, res := range results {
+			diff := float64(res)/1000000000.0 - avg
+			sumsqr += diff * diff
+		}
+		stdev := math.Sqrt(sumsqr / float64(len(results)))
+
+		log.Printf("completed")
+		log.Printf("results [s]:")
+		for _, res := range results {
+			log.Printf("  %5.3f", float64(res)/1000000000.0)
+		}
+		log.Printf("")
+		log.Printf("average [s]:  %5.3f", avg)
+		log.Printf("stdev [s]:    %5.3f", stdev)
+		log.Printf("qmark:        %d", qmark)
+
 	}
-	stdev := math.Sqrt(sumsqr / float64(len(results)))
-	p("completed\n")
-	p("results [s]:")
-	for _, res := range results {
-		p("  %5.3f", float64(res)/1000000000.0)
-	}
-	p("\n")
-	p("average [s]:  %5.3f\n", avg)
-	p("stdev [s]:    %5.3f\n", stdev)
-	p("qmark:        %d\n", int(1000.0/avg))
-*/
 }
