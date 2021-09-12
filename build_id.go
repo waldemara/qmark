@@ -1,2 +1,3 @@
 package main
-const qmark_build "unset"
+
+const build_id = "unset"
