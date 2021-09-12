@@ -18,7 +18,7 @@ func parse_cli(prog string) {
 
 	log.SetFlags(0)
 
-	flag.BoolVar(&cli.quiet, "quiet", false, "quiet mode, only print qmark value")
+	flag.BoolVar(&cli.quiet, "q", false, "quiet mode, only print qmark value")
 	flag.BoolVar(&cli.debug, "debug", false, "print debug information")
 	flag.IntVar(&cli.clients, "clients", 1109, "number of clients")
 	flag.IntVar(&cli.servers, "servers", 151, "number of servers")
