@@ -28,7 +28,7 @@ func main() {
 		log.Printf("qmark build: %v  go version: %v  num cpus: %v",
 			build_id, runtime.Version(), runtime.NumCPU())
 
-		log.Printf("calculating qmark, it could take time... ")
+		log.Printf("calculating qmark... ")
 	}
 
 	var sum time.Duration
@@ -55,7 +55,6 @@ func main() {
 		}
 		stdev := math.Sqrt(sumsqr / float64(len(results)))
 
-		log.Printf("completed")
 		rstr := ""
 		for _, res := range results {
 			rstr += fmt.Sprintf("  %5.3f", float64(res)/1000000000.0)
