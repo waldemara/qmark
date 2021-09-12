@@ -1,12 +1,16 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"math"
 	"os"
+	"runtime"
 	"strings"
 	"time"
 )
+
+//go:generate ./set_build_id
 
 func main() {
 
@@ -16,7 +20,10 @@ func main() {
 	parse_cli(prog)
 
 	if !cli.quiet {
-		log.Printf("Calculating qmark, it could take a minute... ")
+		log.Printf("qmark build: %v  go version: %v  num cpus: %v",
+			build_id, runtime.Version(), runtime.NumCPU())
+
+		log.Printf("calculating qmark, it could take time... ")
 	}
 
 	var sum time.Duration
@@ -44,11 +51,12 @@ func main() {
 		stdev := math.Sqrt(sumsqr / float64(len(results)))
 
 		log.Printf("completed")
-		log.Printf("results [s]:")
+		rstr := ""
 		for _, res := range results {
-			log.Printf("  %5.3f", float64(res)/1000000000.0)
+			rstr += fmt.Sprintf("  %5.3f", float64(res)/1000000000.0)
 		}
-		log.Printf("")
+		log.Printf("results [s]:%v", rstr)
+		//log.Printf("")
 		log.Printf("average [s]:  %5.3f", avg)
 		log.Printf("stdev [s]:    %5.3f", stdev)
 		log.Printf("qmark:        %d", qmark)
