@@ -11,12 +11,12 @@ servers.  The test ends when all clients complete.
 
 	CMD:TRACE
 
-	CMD		- command
-				exit	- exit
-				queue	- update trace and continue test
+	CMD     - command
+	            exit    - exit
+	            queue   - update trace and continue test
 
-	TRACE	- list of visited clients and servers, the last item is the
-			  originator of the message
+	TRACE   - list of visited clients and servers, the last item is the
+	          originator of the message
 
  For example:
 
@@ -37,20 +37,6 @@ import (
 	"strings"
 	"time"
 )
-
-/*
-type Data struct {
-	num_clients int
-	num_servers int
-	num_runs    int
-	clientqs    []chan string
-	serverqs    []chan string
-	client_exit chan int
-	server_exit chan int
-}
-
-var qm = &Data{}
-*/
 
 func client(cid int, clientqs, serverqs []chan string, client_exit chan<- int) {
 

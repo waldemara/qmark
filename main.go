@@ -44,7 +44,7 @@ func main() {
 
 	if cli.quiet {
 
-		log.Println(qmark)
+		log.Print(qmark)
 
 	} else {
 
