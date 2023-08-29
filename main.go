@@ -39,7 +39,7 @@ func main() {
 		sum += res
 	}
 
-	avg := float64(int(sum)/len(results)) / 1000000000.0 // [s]
+	avg := (float64(sum)/float64(len(results)))/float64(time.Second) // [s]
 	qmark := int(1000.0 / avg)
 
 	if cli.quiet {
